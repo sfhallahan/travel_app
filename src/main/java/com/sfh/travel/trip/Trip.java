@@ -1,23 +1,42 @@
 package com.sfh.travel.trip;
 
+import java.util.ArrayList;
+
 public class Trip {
 	
-	private int id;
+	private String tripId;
+	private String userId;
 	private String name;
+	private ArrayList<String> location = new ArrayList<String>();
 	
-	public Trip(int id, String name) {
+//Constructors
+
+	public Trip(String tripId, String userId, String name) {
 		super();
-		this.id = id;
+		this.tripId = tripId;
+		this.userId = userId;
 		this.name = name;
 	}
+	
+	//TODO update constructor to support multiple locations
+	public Trip(String tripId, String userId, String name, String location) {
+		super();
+		this.tripId = tripId;
+		this.userId = userId;
+		this.name = name;
+		this.location.add(location);
+	}
 
+	public Trip() {
+	}
 
-	public int getId() {
-		return id;
+//Getters and setters
+	public String getTripId() {
+		return tripId;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setTripId(String id) {
+		this.tripId = id;
 	}
 
 	public String getName() {
@@ -28,5 +47,26 @@ public class Trip {
 		this.name = name;
 	}
 		
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	//Update location
+	public void addLocation(String loc) {
+		location.add(loc);
+	}
 	
+	public void removeLocation(String loc) {
+		for(int i = 0; i < location.size(); i++) {
+			if (location.get(i).equals(loc)) {
+				location.remove(i);
+			}
+		
+		}
+	}
 }
